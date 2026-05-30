@@ -45,17 +45,13 @@ public class ContadorTest {
     @Test
     void testSumarVariasVeces() {
         contador.iniciar();
-        contador.sumar();
-        contador.sumar();
-        assertEquals(2, contador.sumar());
+        assertEquals(2, contador.sumar(2));
     }
 
     @Test
     void testRestarVariasVeces() {
         contador.iniciar();
-        contador.restar();
-        contador.restar();
-        assertEquals(-2, contador.restar());
+        assertEquals(-2, contador.restar(2));
     }
 
     @Test
