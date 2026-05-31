@@ -145,3 +145,14 @@ jobs:
               echo "" >> $GITHUB_STEP_SUMMARY
             done
           done
+    # 9. VALIDACIÓN DE ESTADO FINAL
+      - name: Validar ejecución general
+        if: always()
+        run: |
+          if [ "${{ steps.checkstyle.outcome }}" == "failure" ] || [ "${{ steps.tests.outcome }}" == "failure" ]; then
+            echo "Se encontraron errores en Checkstyle o en los Tests."
+            echo "Marcando el workflow como fallido."
+            exit 1
+          else
+            echo "Pipeline ejecutado correctamente sin errores."
+          fi
